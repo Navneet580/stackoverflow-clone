@@ -1,51 +1,46 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-
-// import React, { useEffect } from 'react';
-// import { Link, useNavigate } from 'react-router-dom';
-// import { useSelector, useDispatch } from 'react-redux';
-// import decode from "jwt-decode";
+import React, { useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import decode from "jwt-decode";
 
 import logo from '../../assets/logo.png';
 import search from '../../assets/search-solid.svg';
 import Avatar from '../../components/Avatar/Avatar';
-// import './Navbar.css';
-// import { setCurrentUser } from '../../actions/currentUser';
-// import bars from "../../assets/bars-solid.svg";
+import './Navbar.css';
+import { setCurrentUser } from '../../actions/currentUser';
+import bars from "../../assets/bars-solid.svg";
 
-// const Navbar = ({ handleSlideIn }) => {
-//     const dispatch = useDispatch();
-//     var User = useSelector((state) => state.currentUserReducer)
-//     const navigate = useNavigate();
-//     // console.log(User)
+const Navbar = ({ handleSlideIn }) => {
+    const dispatch = useDispatch();
+    var User = useSelector((state) => state.currentUserReducer)
+    const navigate = useNavigate();
+    // console.log(User)
 
-//     const handleLogout = () => {
-//         dispatch({ type: "LOGOUT" });
-//         navigate("/");
-//         dispatch(setCurrentUser(null));
-//         console.log('logout')
-//       };
+    const handleLogout = () => {
+        dispatch({ type: "LOGOUT" });
+        navigate("/");
+        dispatch(setCurrentUser(null));
+        console.log('logout')
+      };
     
-//       useEffect(() =>{
-//         const token = User?.token;
-//         if(token) {
-//             const decodeToken = decode(token);
-//             if(decodeToken.exp * 1000 < new Date().getTime()) {
-//                 handleLogout();
-//             }
-//         }
-//         dispatch(setCurrentUser( JSON.parse(localStorage.getItem('Profile'))));
-//       }, [User?.token, dispatch])
+      useEffect(() =>{
+        const token = User?.token;
+        if(token) {
+            const decodeToken = decode(token);
+            if(decodeToken.exp * 1000 < new Date().getTime()) {
+                handleLogout();
+            }
+        }
+        dispatch(setCurrentUser( JSON.parse(localStorage.getItem('Profile'))));
+      }, [User?.token, dispatch])
     
-    const Navbar =() => {
-        var User = null
-
+    
     return (
         <nav className='main-bar'>
             <div className="navbar">
-               {/* <button className='slide-in-icon' onClick={() => handleSlideIn()}>
+               <button className='slide-in-icon' onClick={() => handleSlideIn()}>
                  <img src={bars} alt='bars' width="15" />
-               </button>  */}
+               </button> 
 
                 <Link to='/' className='nav-item nav-btn'>
                     <img src={logo} alt='logo' />
