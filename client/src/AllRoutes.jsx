@@ -1,5 +1,5 @@
-import React from 'react'
 
+import React from 'react'
 import { Routes, Route } from 'react-router-dom';
 
 import Home from './Pages/Home/Home';
@@ -8,12 +8,11 @@ import Questions from './Pages/Questions/Questions';
 import AskQuestion from './Pages/AskQuestion/AskQuestion';
 import DisplayQuestion from './Pages/Questions/DisplayQuestion';
 
-
 const AllRoutes = () => {
     return (
         <Routes>
-            <Route path='/' Component={<Home />} />
-            <Route path='/Auth' Component={<Auth />} />
+            <Route path='/' element={<Home />} />
+            <Route path='/Auth' element={<Auth />} />
             <Route path='/Questions' element={<Questions />} />
             <Route path='/AskQuestion' element={<AskQuestion />} />
             <Route path='/Questions/:id' element={<DisplayQuestion />} />
@@ -21,4 +20,5 @@ const AllRoutes = () => {
     )
 }
 
-export default AllRoutes;
+export default AllRoutes
+

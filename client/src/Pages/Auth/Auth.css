@@ -3,6 +3,7 @@
     margin: 0% auto;
     background-color: #f1f2f3;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
  }
@@ -58,7 +59,7 @@
  .auth-container-2 form label:nth-child(4) input{
     width: 5%;
     margin: 13px 0px;
-    margin-right: 8px;
+    margin-right: 12px;
  }
 
  .auth-btn {

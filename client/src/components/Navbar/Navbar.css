@@ -1,4 +1,4 @@
-.main-nav{
+.main-nav {
     min-height: 50px;
     width: 100%;
     margin: 0% auto;
@@ -36,7 +36,7 @@
 }
 
 .nav-btn {
-    cursor: pointer;
+    cursor: pointer; 
     border-radius: 20px;
     padding: 10px 20px;
 }

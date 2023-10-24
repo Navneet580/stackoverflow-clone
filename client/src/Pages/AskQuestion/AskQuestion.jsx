@@ -1,11 +1,13 @@
-import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
 
-import './AskQuestion.css'
-import { askQuestion } from '../../actions/question'
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+
+import './AskQuestion.css';
+import { askQuestion } from '../../actions/question';
 
 const AskQuestion = () => {
+
     const [ questionTitle, setQuestionTitle ] = useState('')
     const [ questionBody, setQuestionBody ] = useState('')
     const [ questionTags, setQuestionTags ] = useState('')
@@ -17,17 +19,17 @@ const AskQuestion = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         // console.log({ questionTitle, questionBody, questionTags })
-        dispatch(askQuestion({ questionTitle, questionBody, questionTags, userPosted: User.result.name }, navigate))
+        dispatch(askQuestion({ questionTitle, questionBody, questionTags, userPosted: User.result.name, userId: User?.result?._id }, navigate))
     }
 
     const handleEnter = (e) => {
-        if(e.key === 'Enter'){
+        if (e.key === 'Enter') {
             setQuestionBody(questionBody + "\n")
         }
     }
-
+    
     return (
-        <div className="ask-question">
+        <div className='ask-question'>
             <div className="ask-ques-container">
                 <h1>Ask a public Question</h1>
                 <form onSubmit={handleSubmit}>

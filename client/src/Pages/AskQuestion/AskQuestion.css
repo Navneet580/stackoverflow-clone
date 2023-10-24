@@ -36,7 +36,7 @@
   border: solid 1px #0000003e;
   font-family: "Roboto", sans-serif;
   width: calc(100% - 20px);
-  resize: none;
+  resize: vertical;
 }
 
 .review-btn {

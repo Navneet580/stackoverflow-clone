@@ -1,7 +1,7 @@
-const questionReducer = (state= {data: null}, action) => {
+const questionsReducer = (state= {data: null}, action) => {
     switch (action.type) {
         case "POST_QUESTION":
-            return {...state }
+            return { ...state }
         case "POST_ANSWER":
             return {...state }
         case 'FETCH_ALL_QUESTIONS':
@@ -11,4 +11,4 @@ const questionReducer = (state= {data: null}, action) => {
     }
 }
 
-export default questionReducer
+export default questionsReducer
