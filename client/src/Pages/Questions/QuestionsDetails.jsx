@@ -123,7 +123,7 @@ const QuestionsDetails = () => {
                                     <div className='question-details-container-2'>
                                         <div className='question-votes'>
                                             <img src={upvote} alt="" width='18' className='votes-icon' onClick={handleUpVote} />
-                                            <p>{question.upVotes?.length - question.downVotes?.length || 0}</p>
+                                            <p>{question.upVote?.length - question.downVote?.length}</p>
                                             <img src={downvote} alt="" width='18' className='votes-icon' onClick={handleDownVote} />
                                         </div>
                                         <div style={{width: "100%"}}>

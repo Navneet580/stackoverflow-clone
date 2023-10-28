@@ -1,6 +1,7 @@
-import { React, useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
+import decode from 'jwt-decode';
 
 import logo from '../../assets/logo.png';
 import search from '../../assets/search-solid.svg';
@@ -12,11 +13,24 @@ import { setCurrentUser } from "../../actions/currentUser";
 const Navbar = () => {
 
     const dispatch = useDispatch()
-
     var User = useSelector((state) => (state.currentUserReducer))
+    const navigate = useNavigate()
+
+    const handleLogout = () => {
+        dispatch({ type: 'LOGOUT' });
+        navigate('/')
+        dispatch(setCurrentUser(null))
+    }
 
     useEffect(() => {
-        dispatch(setCurrentUser( JSON.parse(localStorage.getItem('Profile') )))
+        const token = User?.token;
+        if (token) {
+            const decodeToken = decode(token)
+            if (decodeToken.exp * 1000 < new Date().getTime()) {
+                handleLogout()
+            }
+        }
+        dispatch(setCurrentUser( JSON.parse(localStorage.getItem("Profile") )))
     },[dispatch])
 
     return (
@@ -43,7 +57,7 @@ const Navbar = () => {
                           </Link>   
                        </Avatar>
                        
-                       <button className="nav-item nav-links">
+                       <button className="nav-item nav-links" onClick={handleLogout}>
                            Log out
                        </button>
                    </>
